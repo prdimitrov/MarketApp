@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.marketapp.adapter.MyAdapter;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             itemList.add(new Item(R.drawable.beverage, "Beverage", "Juice, Tea, Coffee and Soda"));
             itemList.add(new Item(R.drawable.milk, "Milk", "Milk, Shakes and Yogurt"));
             itemList.add(new Item(R.drawable.popcorn, "Snacks", "Pop Corn, Donut and Drinks"));
+
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
 
             myAdapter = new MyAdapter(itemList);
             recyclerView.setAdapter(myAdapter);
