@@ -45,14 +45,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         // binds the data from your dataset to the views within the view holder
+        Item item = itemList.get(position);
 
+        holder.title.setText(item.getItemName());
+        holder.description.setText(item.getItemDescription());
+        holder.imageView.setImageResource(item.getItemImage());
     }
 
     @Override
     public int getItemCount() {
         // returns the total number of items in your dataset
 
-        return 0;
+        return itemList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder
