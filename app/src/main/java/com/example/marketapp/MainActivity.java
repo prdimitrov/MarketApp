@@ -1,6 +1,8 @@
 package com.example.marketapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,12 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.marketapp.adapter.MyAdapter;
+import com.example.marketapp.listener.ItemClickListener;
 import com.example.marketapp.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClickListener {
 
     // 1 - AdapterView
     RecyclerView recyclerView;
@@ -51,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
             myAdapter = new MyAdapter(itemList);
             recyclerView.setAdapter(myAdapter);
 
+            myAdapter.setClickListener(this);
             return insets;
         });
+    }
+
+    @Override
+    public void onClick(View v, int pos) {
+        Toast.makeText(this, "You Choose: "
+                + itemList.get(pos).getItemName(), Toast.LENGTH_SHORT).show();
     }
 }
